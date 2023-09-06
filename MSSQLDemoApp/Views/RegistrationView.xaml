@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MSSQLDemoApp.Views"
+             xmlns:viewmodels="clr-namespace:MSSQLDemoApp.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:RegistrationViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -35,12 +37,12 @@
                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <TextBox Grid.Column="1" Grid.Row="0"  
-                x:Name="login_tb" Margin="50 50"
+                x:Name="login_tb" Margin="50 45"
                  FontSize=" 24"
                  Text="{Binding Login}"/>
             
             <TextBox Grid.Column="1" Grid.Row="1"  
-                x:Name="password_tb" Margin="50 50"
+                x:Name="password_tb" Margin="50 45"
                  FontSize=" 24"
                  Text="{Binding Password}"/>
         </Grid>
