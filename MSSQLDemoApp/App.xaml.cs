@@ -36,7 +36,7 @@ namespace MSSQLDemoApp
             };
 
             MainWindow.Show();
-            base.OnStartup(e);
+            base.OnStartup(e); 
         }
 
         private WorkersViewModel CreateWorkersViewModel()
