@@ -23,6 +23,8 @@ namespace MSSQLDemoApp.Views
         public RegistrationView()
         {
             InitializeComponent();
+            login_tb.MaxLength = 50;
+            password_tb.MaxLength = 50;
         }
     }
 }

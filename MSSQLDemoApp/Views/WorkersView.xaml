@@ -7,6 +7,47 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        
+        <DataGrid x:Name="gridView"
+                  IsSynchronizedWithCurrentItem="True"
+                  SelectionMode="Single" 
+                  AutoGenerateColumns="False" 
+                  ItemsSource="{Binding}"
+                  IsReadOnly="False" 
+                  CurrentCellChanged="GVCurrentCellChanged"
+                  CellEditEnding="GVCellEditEnding"
+                  >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="id" 
+                                    Binding="{Binding id}" 
+                                    Header="Id" 
+                                    IsReadOnly="True"/>
+
+                <DataGridTextColumn x:Name="workerName" 
+                                    Binding="{Binding workerName}" 
+                                    Header="Имя Сотрудника"/>
+
+                <DataGridTextColumn x:Name="idBoss" 
+                                    Binding="{Binding idBoss}" 
+                                    Header="id начальника"/>
+
+                <DataGridTextColumn x:Name="idDescription" 
+                                    Binding="{Binding idDescription}" 
+                                    Header="id Замечания"/>
+
+
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить" Click="MenuItemAddClick"/>
+                    <MenuItem Header="Удалить" Click="MenuItemDeleteClick"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -46,7 +46,7 @@ namespace MSSQLDemoApp.ViewModels
 
         public RegistrationViewModel(DataBase dataBase, NavigationService navigationService)
         {
-            EnterAccountCommand = new NavigateCommand(navigationService);
+            EnterAccountCommand = new EnterAccountCommand(navigationService, this);
             DataBase = dataBase;
         }
     }

@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\EnterAccountCommand.cs" />
     <Compile Include="Commands\NavigateCommand.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Store\NavigationStore.cs" />
