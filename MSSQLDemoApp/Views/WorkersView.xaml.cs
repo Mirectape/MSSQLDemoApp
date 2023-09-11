@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,17 @@ namespace MSSQLDemoApp.Views
         public WorkersView()
         {
             InitializeComponent();
+            
+        }
+
+        private void GVCurrentCellChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GVCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+
         }
     }
 }

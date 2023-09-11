@@ -1,0 +1,39 @@
+create database test
+
+CREATE TABLE table_name
+(
+	id int IDENTITY(1,1) not null,
+	title nvarchar(20) not null.
+	[values] nvarchar(20) not null
+)
+
+INSERT INTO table_name ([id], [title], [values]) values(1, 'Field 1', 'value 1')
+
+SELECT * FROM table_name
+
+DELETE FROM table_name WHERE table_name.id < 2
+
+UPDATE table_name SET table_name.title = 'new field 2' WHERE table_name.id = 1
+
+DROP TABLE table_name
+
+
+
+SELECT * FROM table_name, [table_name2], table_name3
+
+SELECT
+Workers.id,
+Workers.workerName,
+Bosses.workerName,
+Bosses.departmentName,
+[Description].[value]
+FROM Workers, Bosses, [Description]
+WHERE Workers.IdBoss = Bosses.id and Workers.IdDescription = [Description].id
+
+create table register(
+id_user int identity(1,1) not null,
+login_user varchar(50) not null,
+password_user varchar(50) not null
+);	
+
+insert into register (login_user, password_user) values ('admin', 'admin')

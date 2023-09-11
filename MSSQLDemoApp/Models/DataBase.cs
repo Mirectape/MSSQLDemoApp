@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace MSSQLDemoApp.Models
 {
@@ -24,11 +25,11 @@ namespace MSSQLDemoApp.Models
 
         private SqlConnection _sqlConnection;
 
+
         public DataBase()
         {
             _sqlConnection = new SqlConnection(_strCon.ConnectionString);
         }
-
 
         public void OpenConnection()
         {
