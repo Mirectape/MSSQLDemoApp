@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using MSSQLDemoApp.Models;
 using MSSQLDemoApp.ViewModels;
+using MSSQLDemoApp.Views;
 using MSSQLDemoApp.Store;
 using MSSQLDemoApp.Services;
 
@@ -28,7 +29,7 @@ namespace MSSQLDemoApp
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = new RegistrationViewModel(_dataBase, new NavigationService(_navigationStore, CreateWorkersViewModel));
+            _navigationStore.CurrentViewModel = new RegistrationViewModel(_dataBase, new NavigationService(_navigationStore, CreateMainMenuViewModel));
 
             MainWindow = new MainWindow()
             {
@@ -39,9 +40,9 @@ namespace MSSQLDemoApp
             base.OnStartup(e);
         }
 
-        private WorkersViewModel CreateWorkersViewModel()
+        private MainMenuViewModel CreateMainMenuViewModel()
         {
-            return new WorkersViewModel(_dataBase);
+            return new MainMenuViewModel(_dataBase);
         }
     }
 }
