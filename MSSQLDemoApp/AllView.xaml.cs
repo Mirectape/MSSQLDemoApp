@@ -35,9 +35,9 @@ Workers.id as 'ID',
 Workers.firstName as 'First Name',
 Workers.secondName  as 'Second Name',
 Workers.email  as 'email',
-ProductsOrdered.productCode as 'Product Code'
+ProductsOrdered.productCode as 'Product Code',
 ProductsOrdered.nameOfProduct as 'Name of product'
-FROM  Workers, ProductsOrdered
+FROM Workers, ProductsOrdered
 WHERE Workers.email = ProductsOrdered.email
 Order By Workers.Id";
 

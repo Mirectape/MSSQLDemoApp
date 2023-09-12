@@ -48,7 +48,7 @@
                                     Header="Paternal Name"/>
 
                 <DataGridTextColumn x:Name="phoneNumber" 
-                                    Binding="{Binding paternalName}" 
+                                    Binding="{Binding phoneNumber}" 
                                     Header="Phone Number"/>
 
                 <DataGridTextColumn x:Name="email" 

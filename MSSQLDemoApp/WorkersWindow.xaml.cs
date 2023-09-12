@@ -31,6 +31,7 @@ namespace MSSQLDemoApp
         private DataRowView _selectedWorker;
         public WorkersWindow(DataBase dataBase)
         {
+            InitializeComponent();
             _dataBase = dataBase;
             _dataAdapter = new SqlDataAdapter();
             _dataTable = new DataTable();
@@ -40,7 +41,7 @@ namespace MSSQLDemoApp
             SetDeleteParameters();
             _dataAdapter.Fill(_dataTable);
             _dataView = _dataTable.DefaultView;
-            InitializeComponent();
+            gridView.DataContext = _dataTable.DefaultView;
         }
 
         private void SetSelectionParameters()
