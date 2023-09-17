@@ -72,7 +72,7 @@ namespace MSSQLDemoApp
                            secondName = @secondName, 
                            paternalName = @paternalName,
                            phoneNumber = @phoneNumber,
-                           email = @email,
+                           email = @email
                     WHERE id = @id";
 
             _dataAdapter.UpdateCommand = new SqlCommand(sql, _dataBase.GetConnection());
