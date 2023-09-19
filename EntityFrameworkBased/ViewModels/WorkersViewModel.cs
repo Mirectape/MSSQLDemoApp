@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
+using EntityFrameworkBased.Commands;
 
 namespace EntityFrameworkBased.ViewModels
 {
     public class WorkersViewModel: ViewModelBase
     {
-        private WorkersDBEntities _db;
+        public WorkersDBEntities Db { get; }
         private Workers _selectedItem;
         private object _selectedValue;
 
@@ -38,15 +40,17 @@ namespace EntityFrameworkBased.ViewModels
             {
                 _selectedValue = value;
                 OnPropertyChanged(nameof(SelectedValue));
-                _db.SaveChanges();
             }
         }
 
+        public ICommand SaveChangesCommand { get; }
+
         public WorkersViewModel()
         {
-            _db = new WorkersDBEntities();
-            _db.Workers.Load();
-            Workers = _db.Workers.Local.ToBindingList();
+            Db = new WorkersDBEntities();
+            Db.Workers.Load();
+            Workers = Db.Workers.Local.ToBindingList();
+            SaveChangesCommand = new SaveChangesCommand(this);
         }
     }
 }

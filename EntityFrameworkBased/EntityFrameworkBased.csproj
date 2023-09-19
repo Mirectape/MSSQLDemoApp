@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\EnterAccountCommand.cs" />
+    <Compile Include="Commands\SaveChangesCommand.cs" />
     <Compile Include="Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

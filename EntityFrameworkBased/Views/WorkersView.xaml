@@ -64,6 +64,9 @@
                     <MenuItem Header="Show ordered products"/>
                 </ContextMenu>
             </Grid.ContextMenu>
+            <Button Command="{Binding SaveChangesCommand}" Content="SAVE">
+                
+            </Button>
         </Grid>
     </Grid>
 </UserControl>
