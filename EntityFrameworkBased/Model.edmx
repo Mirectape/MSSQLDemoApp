@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorkersDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WorkersDB.dbo.ProductsOrdered' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProductsOrdered">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="productCode" />
+            <PropertyRef Name="nameofProduct" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="productCode" Type="int" Nullable="false" />
+          <Property Name="nameofProduct" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WorkersDB.dbo.register' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="id_user" />
+            <PropertyRef Name="login_user" />
+            <PropertyRef Name="password_user" />
+          </Key>
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login_user" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password_user" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WorkersDB.dbo.Workers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Workers">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="firstName" />
+            <PropertyRef Name="secondName" />
+            <PropertyRef Name="paternalName" />
+            <PropertyRef Name="phoneNumber" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="secondName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="paternalName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="phoneNumber" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="WorkersDBModelStoreContainer">
+          <EntitySet Name="ProductsOrdered" EntityType="Self.ProductsOrdered" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProductsOrdered].[id] AS [id], 
+    [ProductsOrdered].[email] AS [email], 
+    [ProductsOrdered].[productCode] AS [productCode], 
+    [ProductsOrdered].[nameofProduct] AS [nameofProduct]
+    FROM [dbo].[ProductsOrdered] AS [ProductsOrdered]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="register" EntityType="Self.register" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [register].[id_user] AS [id_user], 
+    [register].[login_user] AS [login_user], 
+    [register].[password_user] AS [password_user]
+    FROM [dbo].[register] AS [register]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Workers" EntityType="Self.Workers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Workers].[id] AS [id], 
+    [Workers].[firstName] AS [firstName], 
+    [Workers].[secondName] AS [secondName], 
+    [Workers].[paternalName] AS [paternalName], 
+    [Workers].[phoneNumber] AS [phoneNumber], 
+    [Workers].[email] AS [email]
+    FROM [dbo].[Workers] AS [Workers]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorkersDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ProductsOrdered">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="productCode" />
+            <PropertyRef Name="nameofProduct" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="productCode" Type="Int32" Nullable="false" />
+          <Property Name="nameofProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="id_user" />
+            <PropertyRef Name="login_user" />
+            <PropertyRef Name="password_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Workers">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="firstName" />
+            <PropertyRef Name="secondName" />
+            <PropertyRef Name="paternalName" />
+            <PropertyRef Name="phoneNumber" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="secondName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="paternalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phoneNumber" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="WorkersDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProductsOrdered" EntityType="Self.ProductsOrdered" />
+          <EntitySet Name="register" EntityType="Self.register" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorkersDBModelStoreContainer" CdmEntityContainer="WorkersDBEntities">
+          <EntitySetMapping Name="ProductsOrdered">
+            <EntityTypeMapping TypeName="WorkersDBModel.ProductsOrdered">
+              <MappingFragment StoreEntitySet="ProductsOrdered">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="productCode" ColumnName="productCode" />
+                <ScalarProperty Name="nameofProduct" ColumnName="nameofProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="register">
+            <EntityTypeMapping TypeName="WorkersDBModel.register">
+              <MappingFragment StoreEntitySet="register">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="login_user" ColumnName="login_user" />
+                <ScalarProperty Name="password_user" ColumnName="password_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workers">
+            <EntityTypeMapping TypeName="WorkersDBModel.Workers">
+              <MappingFragment StoreEntitySet="Workers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="secondName" ColumnName="secondName" />
+                <ScalarProperty Name="paternalName" ColumnName="paternalName" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
