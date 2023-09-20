@@ -13,10 +13,10 @@ namespace EntityFrameworkBased
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WorkersDBEntities : DbContext
+    public partial class WorkersDBEntities1 : DbContext
     {
-        public WorkersDBEntities()
-            : base("name=WorkersDBEntities")
+        public WorkersDBEntities1()
+            : base("name=WorkersDBEntities1")
         {
         }
     
@@ -25,8 +25,9 @@ namespace EntityFrameworkBased
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Worker> Worker { get; set; }
+        public virtual DbSet<Workers> Workers { get; set; }
         public virtual DbSet<ProductsOrdered> ProductsOrdered { get; set; }
         public virtual DbSet<register> register { get; set; }
-        public virtual DbSet<Workers> Workers { get; set; }
     }
 }

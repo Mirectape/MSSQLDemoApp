@@ -13,44 +13,27 @@ namespace EntityFrameworkBased.ViewModels
 {
     public class WorkersViewModel: ViewModelBase
     {
-        public WorkersDBEntities Db { get; }
-        private Workers _selectedItem;
-        private object _selectedValue;
-
+        private Workers _selectedWorker;
+        public WorkersDBEntities1 Db { get; }
         public BindingList<Workers> Workers { get; }
-        public Workers SelectedItem
+        public Workers SelectedWorker
         {
             get
             {
-                return _selectedItem;
+                return _selectedWorker;
             }
             set
             {
-                _selectedItem = value;
-                OnPropertyChanged(nameof(SelectedItem));
+                _selectedWorker = value;
+                OnPropertyChanged(nameof(_selectedWorker));
             }
         }
-        public object SelectedValue
-        {
-            get
-            {
-                return _selectedValue;
-            }
-            set
-            {
-                _selectedValue = value;
-                OnPropertyChanged(nameof(SelectedValue));
-            }
-        }
-
-        public ICommand SaveChangesCommand { get; }
 
         public WorkersViewModel()
         {
-            Db = new WorkersDBEntities();
+            Db = new WorkersDBEntities1();
             Db.Workers.Load();
             Workers = Db.Workers.Local.ToBindingList();
-            SaveChangesCommand = new SaveChangesCommand(this);
         }
     }
 }

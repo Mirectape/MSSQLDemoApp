@@ -12,7 +12,7 @@ namespace EntityFrameworkBased.Commands
 {
     class EnterAccountCommand : CommandBase
     {
-        private WorkersDBEntities _db;
+        private WorkersDBEntities1 _db;
         private readonly NavigationService _navigationService;
         private readonly RegistrationViewModel _registrationViewModel;
 
@@ -20,7 +20,7 @@ namespace EntityFrameworkBased.Commands
         {
             _navigationService = navigationService;
             _registrationViewModel = registrationViewModel;
-            _db = new WorkersDBEntities();
+            _db = new WorkersDBEntities1();
         }
 
         public override void Execute(object parameter)

@@ -31,16 +31,20 @@ warning 6002: The table/view 'WorkersDB.dbo.register' does not have a primary ke
           <Property Name="login_user" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password_user" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'WorkersDB.dbo.Workers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="secondName" Type="nvarchar" MaxLength="50" />
+          <Property Name="paternalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="phoneNumber" Type="int" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Workers">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="firstName" />
-            <PropertyRef Name="secondName" />
-            <PropertyRef Name="paternalName" />
-            <PropertyRef Name="phoneNumber" />
-            <PropertyRef Name="email" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -50,6 +54,8 @@ warning 6002: The table/view 'WorkersDB.dbo.Workers' does not have a primary key
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityContainer Name="WorkersDBModelStoreContainer">
+          <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductsOrdered" EntityType="Self.ProductsOrdered" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ProductsOrdered].[id] AS [id], 
@@ -65,22 +71,34 @@ warning 6002: The table/view 'WorkersDB.dbo.Workers' does not have a primary key
     [register].[password_user] AS [password_user]
     FROM [dbo].[register] AS [register]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Workers" EntityType="Self.Workers" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Workers].[id] AS [id], 
-    [Workers].[firstName] AS [firstName], 
-    [Workers].[secondName] AS [secondName], 
-    [Workers].[paternalName] AS [paternalName], 
-    [Workers].[phoneNumber] AS [phoneNumber], 
-    [Workers].[email] AS [email]
-    FROM [dbo].[Workers] AS [Workers]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WorkersDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="secondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="paternalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNumber" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Workers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="secondName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="paternalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phoneNumber" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="ProductsOrdered">
           <Key>
             <PropertyRef Name="id" />
@@ -103,33 +121,42 @@ warning 6002: The table/view 'WorkersDB.dbo.Workers' does not have a primary key
           <Property Name="login_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Workers">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="firstName" />
-            <PropertyRef Name="secondName" />
-            <PropertyRef Name="paternalName" />
-            <PropertyRef Name="phoneNumber" />
-            <PropertyRef Name="email" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="secondName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="paternalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="phoneNumber" Type="Int32" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityContainer Name="WorkersDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WorkersDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Worker" EntityType="Self.Worker" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" />
           <EntitySet Name="ProductsOrdered" EntityType="Self.ProductsOrdered" />
           <EntitySet Name="register" EntityType="Self.register" />
-          <EntitySet Name="Workers" EntityType="Self.Workers" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WorkersDBModelStoreContainer" CdmEntityContainer="WorkersDBEntities">
+        <EntityContainerMapping StorageEntityContainer="WorkersDBModelStoreContainer" CdmEntityContainer="WorkersDBEntities1">
+          <EntitySetMapping Name="Worker">
+            <EntityTypeMapping TypeName="WorkersDBModel.Worker">
+              <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="secondName" ColumnName="secondName" />
+                <ScalarProperty Name="paternalName" ColumnName="paternalName" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workers">
+            <EntityTypeMapping TypeName="WorkersDBModel.Workers">
+              <MappingFragment StoreEntitySet="Workers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="secondName" ColumnName="secondName" />
+                <ScalarProperty Name="paternalName" ColumnName="paternalName" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ProductsOrdered">
             <EntityTypeMapping TypeName="WorkersDBModel.ProductsOrdered">
               <MappingFragment StoreEntitySet="ProductsOrdered">
@@ -146,18 +173,6 @@ warning 6002: The table/view 'WorkersDB.dbo.Workers' does not have a primary key
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="login_user" ColumnName="login_user" />
                 <ScalarProperty Name="password_user" ColumnName="password_user" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Workers">
-            <EntityTypeMapping TypeName="WorkersDBModel.Workers">
-              <MappingFragment StoreEntitySet="Workers">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="secondName" ColumnName="secondName" />
-                <ScalarProperty Name="paternalName" ColumnName="paternalName" />
-                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

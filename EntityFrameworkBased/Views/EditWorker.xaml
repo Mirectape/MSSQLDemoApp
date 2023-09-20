@@ -1,0 +1,34 @@
+﻿<Window x:Class="EntityFrameworkBased.Views.EditWorker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EntityFrameworkBased.Views"
+        mc:Ignorable="d"
+        Title="EditWorker" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <ComboBox x:Name="comboBox"  Margin="70 100 70 10">
+                <ComboBox.Items>
+                    <ComboBoxItem>First Name</ComboBoxItem>
+                    <ComboBoxItem>Second Name</ComboBoxItem>
+                    <ComboBoxItem>Paternal Name</ComboBoxItem>
+                    <ComboBoxItem>Phone Number</ComboBoxItem>
+                    <ComboBoxItem>Email</ComboBoxItem>
+                </ComboBox.Items>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column ="1">
+            <TextBox Grid.Row="1" x:Name="txtBox" Margin="50 100 50 10" Height="30"/>
+            <Button Height="35" Margin="50,0,50,0" Content="Update" Click="UpdateBtn_Click"/>
+            <Button Height="35" Margin="50,20,50,0" Content="Cancel" Click="CancelBtn_Click"/>
+        </StackPanel>
+
+
+    </Grid>
+</Window>

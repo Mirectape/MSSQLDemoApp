@@ -22,9 +22,41 @@ namespace EntityFrameworkBased.Views
     /// </summary>
     public partial class WorkersView : UserControl
     {
+        private WorkersDBEntities1 _db;
+
         public WorkersView()
         {
             InitializeComponent();
+            _db = new WorkersDBEntities1();
+            LoadData(); 
         }
+
+        private void InsertBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddWorker addWorker = new AddWorker(this);
+            
+            addWorker.ShowDialog();
+        }
+
+        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            EditWorker editWorker = new EditWorker(this, (Workers)gridView.SelectedItem);
+
+            editWorker.ShowDialog();
+        }
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int id = (gridView.SelectedItem as Workers).id;
+            var deleteWorker = _db.Workers.Where(m => m.id == id).Single();
+            _db.Workers.Remove(deleteWorker);
+            _db.SaveChanges();
+            gridView.ItemsSource = _db.Workers.ToList();
+        }
+
+        private void LoadData()
+        {
+            gridView.ItemsSource = _db.Workers.ToList();
+        }
+
     }
 }
