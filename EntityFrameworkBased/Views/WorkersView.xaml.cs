@@ -58,5 +58,10 @@ namespace EntityFrameworkBased.Views
             gridView.ItemsSource = _db.Workers.ToList();
         }
 
+        private void OrdersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Orders orders = new Orders();
+            orders.ShowDialog();
+        }
     }
 }

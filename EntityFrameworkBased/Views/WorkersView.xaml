@@ -35,6 +35,7 @@
             <Button Content="Insert" Margin="0 0 0 20" Click="InsertBtn_Click"/>
             <Button Content="Update" Margin="0 0 0 20" Click="UpdateBtn_Click"/>
             <Button Content="Delete" Margin="0 0 0 20" Click="DeleteBtn_Click"/>
+            <Button Content="See orders" Margin="0 0 0 20" Click="OrdersBtn_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
